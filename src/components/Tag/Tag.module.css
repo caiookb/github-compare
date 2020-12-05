@@ -1,0 +1,23 @@
+.tag {
+  margin-top: 8.5px;
+  width: fit-content;
+  height: 16px;
+  background: #ffffff;
+  border: 1.5px solid #ff8f39;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5px 4px;
+  border-radius: 2px;
+}
+
+.value {
+  font-family: SF Pro Text;
+  font-style: normal;
+  line-height: 150%;
+  margin: 0;
+  font-weight: 600;
+  font-size: 10px;
+  color: #b95000;
+  text-transform: uppercase;
+}
