@@ -1,0 +1,51 @@
+.card {
+  width: 321px;
+}
+
+.titleRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.cardImage {
+  width: 40px;
+  height: 40px;
+  margin: 4px 7px 6px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  width: 180px;
+  max-width: 180px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cardOptions {
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  margin-right: 24px;
+}
+
+.cardDivisor {
+  height: 1px;
+  width: 321px;
+  background-color: #e7e7ed;
+}
+
+.infos {
+  margin: 0;
+  font-family: SF Pro Text;
+  font-style: normal;
+  line-height: 150%;
+  font-size: 14px;
+}
