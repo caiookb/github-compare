@@ -1,0 +1,14 @@
+.view {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: flex-start;
+  width: 1060px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .view {
+    width: unset;
+  }
+}
