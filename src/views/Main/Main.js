@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Card, ExpandedCard } from "../../components";
 import Nav from "../Nav/Nav";
-import EmptyRepositories from "../EmptyRepositories/EmptyRepositories";
-import EmptySearch from "../EmptyRepositories/EmptySearch";
+import EmptyRepositories from "../Errors/EmptyRepositories";
+import EmptySearch from "../Errors/EmptySearch";
 
 import { connect } from "react-redux";
 import * as RepositoryController from "../../controllers/RepositoriesController";
