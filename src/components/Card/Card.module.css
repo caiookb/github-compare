@@ -1,22 +1,26 @@
 .card {
-  width: 321px;
+  max-width: 321px;
+  margin: 0px 15px 50px;
+  padding: 0;
 }
 
 .titleRow {
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   height: 50px;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 2px solid #e7e7ed;
+  padding: 0;
 }
 
 .cardImage {
   width: 40px;
   height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   margin: 4px 7px 6px 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .title {
@@ -30,10 +34,10 @@
 .cardOptions {
   display: flex;
   align-items: center;
-}
-
-.icons {
+  justify-content: space-between;
+  width: 20%;
   margin-right: 24px;
+  font-size: 16px;
 }
 
 .cardDivisor {

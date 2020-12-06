@@ -3,6 +3,7 @@ import ClayCard from "@clayui/card";
 import ClayIcon, { ClayIconSpriteContext } from "@clayui/icon";
 import { Tag } from "..";
 import { spritemap } from "../../App";
+import { Icon } from "../../components";
 import styles from "./Card.module.css";
 
 const Card = (props) => {
@@ -21,22 +22,22 @@ const Card = (props) => {
   ];
 
   return (
-    <ClayCard className={styles.card}>
+    <ClayCard className={`col-md-6 ${styles.card}`}>
       <ClayCard.Row className={styles.titleRow}>
         <ClayIconSpriteContext.Provider value={spritemap}>
-          <div className={styles.cardImage}>
-            <div>b</div>
-          </div>
+          <div
+            className={styles.cardImage}
+            style={{ backgroundImage: `url(${repository.image})` }}
+          ></div>
           <ClayCard.Description className={styles.title} displayType="title">
-            {title}
+            {repository.name}
           </ClayCard.Description>
           <div className={styles.cardOptions}>
-            <i className={styles.icons}>a</i>
-            <i className={styles.icons}>a</i>
+            <Icon icon={"star-o"} />
+            <Icon icon={"trash"} />
           </div>
         </ClayIconSpriteContext.Provider>
       </ClayCard.Row>
-      <ClayCard.Row className={styles.cardDivisor} />
       <ClayCard.Body>
         <ClayCard.Description
           className={styles.infos}
