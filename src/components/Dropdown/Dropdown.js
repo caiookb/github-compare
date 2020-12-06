@@ -5,12 +5,12 @@ import Icon from "../Icon/Icon";
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
 
-const DefaultDropdown = ({ options }) => {
+const DefaultDropdown = ({ options, onClick }) => {
   return (
     <ClayDropDown.ItemList>
       <ClayDropDown.Group header={"ORDER BY"}>
         {options?.map((item, i) => (
-          <ClayDropDown.Item href={item.href} key={i}>
+          <ClayDropDown.Item onClick={(e) => onClick(item)} key={i}>
             {item.label}
           </ClayDropDown.Item>
         ))}
@@ -40,7 +40,7 @@ const IconDropdown = ({ onClick, options }) => {
 };
 
 const Dropdown = (props) => {
-  const { title, options, icon } = props;
+  const { title, options, icon, onClick } = props;
   const [active, setActive] = useState(false);
 
   return (
@@ -61,7 +61,7 @@ const Dropdown = (props) => {
       alignmentPosition={title ? ["tl", "bl"] : ["br", "tr"]}
     >
       {title ? (
-        <DefaultDropdown options={options} />
+        <DefaultDropdown {...props} />
       ) : options ? (
         <IconDropdown {...props} />
       ) : null}

@@ -18,9 +18,23 @@ const viewTypes = [
   },
 ];
 
+const filterAndOrdersOptions = [
+  { value: "stars", label: "Stars" },
+  { value: "forks", label: "Forks" },
+  { value: "openIssues", label: "Open Issues" },
+  { value: "age", label: "Age" },
+  { value: "lastCommit", label: "Last commit" },
+];
+
 const Nav = (props) => {
-  const { fetchRepository } = props;
+  const {
+    fetchRepository,
+    searchByName,
+    filterByFavorite,
+    orderByCategory,
+  } = props;
   const [active, setActive] = useState(false);
+  const [filterAsFavorite, setFilterAsFavorite] = useState(false);
 
   return (
     <div className={sytles.container}>
@@ -31,17 +45,32 @@ const Nav = (props) => {
           </ClayNav.Item>
           <ClayNav.Item className={sytles.navItem}>Github Compare</ClayNav.Item>
           <ClayNav.Item className={sytles.navItem}>
-            <Dropdown title={"Filter and order"} icon={"caret-bottom"} />
+            <Dropdown
+              title={"Filter and order"}
+              icon={"caret-bottom"}
+              options={filterAndOrdersOptions}
+              onClick={(e) => orderByCategory(e.value)}
+            />
           </ClayNav.Item>
         </div>
 
         <ClayForm.Group className={sytles.navGroup}>
-          <TextInput placeholder={"Search"} icon={"search"} />
+          <TextInput
+            placeholder={"Search"}
+            icon={"search"}
+            onChange={searchByName}
+          />
         </ClayForm.Group>
 
         <div className={sytles.navGroup}>
           <ClayNav.Item className={sytles.navItem}>
-            <Icon icon={"star-o"} />
+            <Icon
+              icon={filterAsFavorite ? "star" : "star-o"}
+              onClick={() => {
+                setFilterAsFavorite(!filterAsFavorite);
+                filterByFavorite(!filterAsFavorite);
+              }}
+            />
           </ClayNav.Item>
           <ClayNav.Item className={sytles.navItem}>
             <Icon icon={"adjust"} />
@@ -82,6 +111,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchRepository: (repository) =>
       dispatch(RepositoryController.getRepositoryByName(repository)),
+    searchByName: (name) =>
+      dispatch(RepositoryController.searchRepositoryByName(name)),
+    filterByFavorite: (trigger) =>
+      dispatch(RepositoryController.filterByFavorite(trigger)),
+    orderByCategory: (category) =>
+      dispatch(RepositoryController.orderByCategory(category)),
   };
 };
 

@@ -15,8 +15,8 @@ export const getRepositoryByName = (name) => (dispatch, state) => {
         stars: res.data.stargazers_count,
         forks: res.data.forks,
         openIssues: res.data.open_issues_count,
-        age: moment(res.data.created_at, "YYYYMM").fromNow(),
-        lastCommit: moment(res.data.updated_at).format("ll"),
+        age: res.data.created_at,
+        lastCommit: res.data.updated_at,
         license: res.data.license?.name || "N/A",
         language: res.data.language,
         name: `${res.data.owner.login}/${res.data.name}`,
@@ -40,4 +40,68 @@ export const saveLocalRepoOnRedux = () => (dispatch) => {
   dispatch(RepositoriesActions.saveRepositories(!repos ? [] : repos));
 };
 
-export const searchRepositoryByName = (name) => (dispatch) => {};
+export const searchRepositoryByName = (name) => (dispatch) => {
+  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const filterByName = repositories.filter((repository) =>
+    repository.name.toUpperCase().includes(name.toUpperCase())
+  );
+
+  dispatch(RepositoriesActions.saveRepositories(filterByName));
+};
+
+export const markAsFavorite = (repository) => (dispatch) => {
+  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const repositoryToMark = repositories.find(
+    (repo) => repo.name === repository.name
+  );
+
+  repositories.map((repo) =>
+    repo.name === repositoryToMark.name
+      ? (repo.favorite = !repo.favorite)
+      : null
+  );
+
+  dispatch(RepositoriesActions.saveRepositories(repositories));
+  localStorage.setItem("repositoriesList", JSON.stringify(repositories));
+};
+
+export const removeRepository = (repository) => (dispatch) => {
+  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const repositoryToDelete = repositories.find(
+    (repo) => repo.name === repository.name
+  );
+
+  const filteringRepositories = repositories.filter(
+    (repo) => repo.name !== repositoryToDelete.name
+  );
+
+  dispatch(RepositoriesActions.saveRepositories(filteringRepositories));
+  localStorage.setItem(
+    "repositoriesList",
+    JSON.stringify(filteringRepositories)
+  );
+};
+
+export const filterByFavorite = (trigger) => (dispatch) => {
+  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const filterByFavorite = repositories.filter(
+    (repository) => repository.favorite === trigger
+  );
+
+  dispatch(
+    RepositoriesActions.saveRepositories(
+      trigger ? filterByFavorite : repositories
+    )
+  );
+};
+
+export const orderByCategory = (category) => (dispatch) => {
+  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const orderRepositories = repositories.sort(
+    (a, b) => b[category] - a[category]
+  );
+
+  console.log(orderByCategory);
+
+  dispatch(RepositoriesActions.saveRepositories(orderRepositories));
+};

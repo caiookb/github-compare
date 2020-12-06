@@ -50,12 +50,14 @@ const InputDropdown = (props) => {
               btnClass={"primary"}
               title={"Add"}
               onClick={() =>
-                onClick(value).catch((err) => {
-                  setError(err.message);
-                  setTimeout(() => {
-                    setError(false);
-                  }, 4000);
-                })
+                onClick(value)
+                  .then(() => setActive(false))
+                  .catch((err) => {
+                    setError(err.message);
+                    setTimeout(() => {
+                      setError(false);
+                    }, 4000);
+                  })
               }
             />
           </div>
