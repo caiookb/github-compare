@@ -61,6 +61,7 @@ const Nav = (props) => {
             placeholder={"Search"}
             icon={"search"}
             onChange={searchByName}
+            id={"filter"}
           />
         </ClayForm.Group>
 

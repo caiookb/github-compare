@@ -14,7 +14,16 @@ const TextInputIcon = ({ icon, onClick }) => {
 
 const TextInput = (props) => {
   const [value, setValue] = useState("");
-  const { placeholder, icon, onChange, label, width, required, error } = props;
+  const {
+    placeholder,
+    icon,
+    onChange,
+    label,
+    width,
+    required,
+    error,
+    id,
+  } = props;
 
   return (
     <div class="input-group">
@@ -25,6 +34,7 @@ const TextInput = (props) => {
         </label>
 
         <input
+          id={id}
           placeholder={placeholder}
           value={value}
           onChange={(e) => {

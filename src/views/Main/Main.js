@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Card, ExpandedCard } from "../../components";
 import Nav from "../Nav/Nav";
 import EmptyRepositories from "../EmptyRepositories/EmptyRepositories";
+import EmptySearch from "../EmptyRepositories/EmptySearch";
+
 import { connect } from "react-redux";
 import * as RepositoryController from "../../controllers/RepositoriesController";
 import styles from "./Main.module.css";
@@ -20,7 +22,12 @@ const Main = (props) => {
     setUpOptions();
   }, []);
 
+  const repositories =
+    JSON.parse(localStorage.getItem("repositoriesList")) || [];
+
   const empty = repositoriesList?.length === 0;
+  const failedSearch =
+    repositoriesList?.length === 0 && repositories.length > 0;
 
   return (
     <div className={"container-fluid"}>
@@ -28,7 +35,9 @@ const Main = (props) => {
 
       <div className="container">
         <div className={`row  ${styles.view}`}>
-          {empty ? (
+          {failedSearch ? (
+            <EmptySearch />
+          ) : empty ? (
             <EmptyRepositories />
           ) : (
             <>
