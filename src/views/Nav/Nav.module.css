@@ -32,6 +32,7 @@
 
 .navGroup:nth-child(1) .navItem:nth-child(2) {
   margin-right: 20px;
+  margin-top: 1px;
 }
 
 .navGroup:nth-child(2) {
