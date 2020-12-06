@@ -1,6 +1,5 @@
 import ClayCard from "@clayui/card";
-import { Tag } from "..";
-import { Icon } from "../../components";
+import { Icon, Modal, Tag } from "../../components";
 import styles from "./Card.module.css";
 import * as RepositoryController from "../../controllers/RepositoriesController";
 import { connect } from "react-redux";
@@ -38,7 +37,12 @@ const Card = (props) => {
             icon={repository.favorite ? "star" : "star-o"}
             onClick={() => markAsFavorite(repository)}
           />
-          <Icon icon={"trash"} onClick={() => removeRepository(repository)} />
+          <Modal
+            icon={"trash"}
+            onClickFunction={removeRepository}
+            item={repository}
+            color={"warning"}
+          />
         </div>
       </ClayCard.Row>
       <ClayCard.Body>
