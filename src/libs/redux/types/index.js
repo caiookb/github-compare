@@ -1,3 +1,4 @@
+import * as OptionsTypes from "./OptionsTypes";
 import * as RepositoriesTypes from "./RepositoriesTypes";
 
-export { RepositoriesTypes };
+export { OptionsTypes, RepositoriesTypes };

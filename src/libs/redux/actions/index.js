@@ -1,3 +1,4 @@
 import * as RepositoriesActions from "./RepositoriesActions";
+import * as OptionsActions from "./OptionsActions";
 
-export { RepositoriesActions };
+export { OptionsActions, RepositoriesActions };
