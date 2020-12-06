@@ -1,13 +1,11 @@
 import { RepositoriesActions } from "../libs/redux/actions";
 import { RepositoriesServer } from "../server";
-import moment from "moment";
 
-export const getRepositoryByName = (name) => (dispatch, state) => {
+export const getRepositoryByName = (name) => (dispatch) => {
   return RepositoriesServer.fetchRepositoryByName(name)
     .then((res) => {
-      const {
-        repositories: { repositoriesList },
-      } = state();
+      const repositoriesList =
+        JSON.parse(localStorage.getItem("repositoriesList")) || [];
 
       const list = [...repositoriesList];
 
@@ -18,7 +16,7 @@ export const getRepositoryByName = (name) => (dispatch, state) => {
         age: res.data.created_at,
         lastCommit: res.data.updated_at,
         license: res.data.license?.name || "N/A",
-        language: res.data.language,
+        language: res.data.language || "Other",
         name: `${res.data.owner.login}/${res.data.name}`,
         image: res.data.owner.avatar_url,
         favorite: false,
@@ -30,18 +28,19 @@ export const getRepositoryByName = (name) => (dispatch, state) => {
       localStorage.setItem("repositoriesList", JSON.stringify(list));
     })
     .catch((error) => {
-      console.log("error", error);
       throw error;
     });
 };
 
 export const saveLocalRepoOnRedux = () => (dispatch) => {
-  const repos = JSON.parse(localStorage.getItem("repositoriesList"));
+  const repos = JSON.parse(localStorage.getItem("repositoriesList")) || [];
   dispatch(RepositoriesActions.saveRepositories(!repos ? [] : repos));
 };
 
 export const searchRepositoryByName = (name) => (dispatch) => {
-  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const repositories =
+    JSON.parse(localStorage.getItem("repositoriesList")) || [];
+
   const filterByName = repositories.filter((repository) =>
     repository.name.toUpperCase().includes(name.toUpperCase())
   );
@@ -50,7 +49,8 @@ export const searchRepositoryByName = (name) => (dispatch) => {
 };
 
 export const markAsFavorite = (repository) => (dispatch) => {
-  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const repositories =
+    JSON.parse(localStorage.getItem("repositoriesList")) || [];
   const repositoryToMark = repositories.find(
     (repo) => repo.name === repository.name
   );
@@ -66,7 +66,8 @@ export const markAsFavorite = (repository) => (dispatch) => {
 };
 
 export const removeRepository = (repository) => (dispatch) => {
-  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
+  const repositories =
+    JSON.parse(localStorage.getItem("repositoriesList")) || [];
   const repositoryToDelete = repositories.find(
     (repo) => repo.name === repository.name
   );
@@ -80,28 +81,4 @@ export const removeRepository = (repository) => (dispatch) => {
     "repositoriesList",
     JSON.stringify(filteringRepositories)
   );
-};
-
-export const filterByFavorite = (trigger) => (dispatch) => {
-  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
-  const filterByFavorite = repositories.filter(
-    (repository) => repository.favorite === trigger
-  );
-
-  dispatch(
-    RepositoriesActions.saveRepositories(
-      trigger ? filterByFavorite : repositories
-    )
-  );
-};
-
-export const orderByCategory = (category) => (dispatch) => {
-  const repositories = JSON.parse(localStorage.getItem("repositoriesList"));
-  const orderRepositories = repositories.sort(
-    (a, b) => b[category] - a[category]
-  );
-
-  console.log(orderByCategory);
-
-  dispatch(RepositoriesActions.saveRepositories(orderRepositories));
 };
