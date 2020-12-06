@@ -1,15 +1,7 @@
 import React from "react";
 import { icons } from "../../assets/icons";
 
-const Icon = ({
-  icon,
-  padding,
-  backgroundColor,
-  color,
-  radius,
-  onClick,
-  ref,
-}) => {
+const Icon = ({ icon, padding, backgroundColor, color, radius, onClick }) => {
   return (
     <i
       style={{
