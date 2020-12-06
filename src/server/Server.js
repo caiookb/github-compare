@@ -7,7 +7,7 @@ const url = (path) => {
 };
 
 export default (config) => {
-  const { method, path } = config;
+  const { method, path, body } = config;
 
   const opt = {
     method,

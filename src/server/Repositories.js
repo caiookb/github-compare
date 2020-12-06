@@ -1,6 +1,6 @@
 import fetchServer from "./Server";
 
-export const getCompanies = (body) => {
+export const fetchRepositoryByName = (body) => {
   return fetchServer({
     method: "GET",
     path: ["repos", body],
