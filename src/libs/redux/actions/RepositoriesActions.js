@@ -1,16 +1,11 @@
-import {UserTypes} from '../types';
+import { RepositoriesTypes } from "../types";
 
-export const saveUser = (user) => ({
-  type: UserTypes.SAVE_USER,
+export const saveRepositories = (user) => ({
+  type: RepositoriesTypes.SAVE_REPOSITORIES,
   payload: user,
 });
 
-export const clearUser = () => ({
-  type: UserTypes.CLEAN_USER,
+export const cleanrRepositories = () => ({
+  type: RepositoriesTypes.CLEAN_REPOSITORIES,
   payload: {},
-});
-
-export const isAuth = (auth) => ({
-  type: UserTypes.IS_AUTH,
-  payload: auth,
 });
