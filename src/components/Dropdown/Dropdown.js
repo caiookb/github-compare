@@ -1,16 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Dropdown.module.css";
 import ClayDropDown from "@clayui/drop-down";
 import Icon from "../Icon/Icon";
-import TextInput from "../TextInput/TextInput";
-import Button from "../Button/Button";
 
-const DefaultDropdown = ({ options, onClick }) => {
+const DefaultDropdown = ({ options, onClickFunction, setActive }) => {
   return (
     <ClayDropDown.ItemList>
       <ClayDropDown.Group header={"ORDER BY"}>
         {options?.map((item, i) => (
-          <ClayDropDown.Item onClick={(e) => onClick(item)} key={i}>
+          <ClayDropDown.Item
+            onClick={(e) => {
+              onClickFunction(item);
+              setActive(false);
+            }}
+            key={i}
+          >
             {item.label}
           </ClayDropDown.Item>
         ))}
@@ -19,7 +23,7 @@ const DefaultDropdown = ({ options, onClick }) => {
   );
 };
 
-const IconDropdown = ({ onClick, options }) => {
+const IconDropdown = ({ onClickFunction, options, setActive }) => {
   return (
     <ClayDropDown.ItemList>
       <ClayDropDown.Group>
@@ -27,7 +31,10 @@ const IconDropdown = ({ onClick, options }) => {
           <ClayDropDown.Item
             href={item.href}
             key={i}
-            onClick={() => onClick(item.label)}
+            onClick={() => {
+              onClickFunction(item.label.toLowerCase());
+              setActive(false);
+            }}
           >
             <Icon icon={item.icon} />
             {"\t\t"}
@@ -40,7 +47,7 @@ const IconDropdown = ({ onClick, options }) => {
 };
 
 const Dropdown = (props) => {
-  const { title, options, icon, onClick } = props;
+  const { title, options, icon } = props;
   const [active, setActive] = useState(false);
 
   return (
@@ -61,9 +68,9 @@ const Dropdown = (props) => {
       alignmentPosition={title ? ["tl", "bl"] : ["br", "tr"]}
     >
       {title ? (
-        <DefaultDropdown {...props} />
+        <DefaultDropdown {...props} setActive={setActive} />
       ) : options ? (
-        <IconDropdown {...props} />
+        <IconDropdown {...props} setActive={setActive} />
       ) : null}
     </ClayDropDown>
   );
