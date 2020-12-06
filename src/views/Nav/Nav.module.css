@@ -60,3 +60,19 @@
   font-weight: 500;
   font-size: 16px;
 }
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    display: flex;
+    width: 100%;
+    align-content: space-around;
+    justify-content: center;
+    height: 160px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+
+  .navGroup:nth-child(2) {
+    max-width: 300px;
+  }
+}

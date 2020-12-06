@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import sytles from "./Nav.module.css";
 import ClayNav from "@clayui/nav";
 import ClayForm from "@clayui/form";
 import { Dropdown, Icon, InputDropdown, TextInput } from "../../components";
 import { githubImage } from "../../assets/images";
 import { connect } from "react-redux";
-import * as RepositoryController from "../../controllers/RepositoriesController";
+import { RepositoryController, OptionsController } from "../../controllers";
 
 const viewTypes = [
   {
@@ -27,17 +27,19 @@ const filterAndOrdersOptions = [
 ];
 
 const Nav = (props) => {
+  const { fetchRepository, searchByName, orderByCategory } = props;
+
   const {
-    fetchRepository,
-    searchByName,
+    cardView,
+    setCardView,
+    filterFavorite,
     filterByFavorite,
-    orderByCategory,
+    setDarkmode,
+    darkMode,
   } = props;
-  const [active, setActive] = useState(false);
-  const [filterAsFavorite, setFilterAsFavorite] = useState(false);
 
   return (
-    <div className={sytles.container}>
+    <div className={sytles.container} id={"nav"}>
       <ClayNav className={sytles.nav}>
         <div className={sytles.navGroup}>
           <ClayNav.Item className={sytles.navItem}>
@@ -49,7 +51,7 @@ const Nav = (props) => {
               title={"Filter and order"}
               icon={"caret-bottom"}
               options={filterAndOrdersOptions}
-              onClick={(e) => orderByCategory(e.value)}
+              onClickFunction={(e) => orderByCategory(e.value)}
             />
           </ClayNav.Item>
         </div>
@@ -65,21 +67,25 @@ const Nav = (props) => {
         <div className={sytles.navGroup}>
           <ClayNav.Item className={sytles.navItem}>
             <Icon
-              icon={filterAsFavorite ? "star" : "star-o"}
+              icon={filterFavorite ? "star" : "star-o"}
               onClick={() => {
-                setFilterAsFavorite(!filterAsFavorite);
-                filterByFavorite(!filterAsFavorite);
+                filterByFavorite(!filterFavorite);
               }}
             />
           </ClayNav.Item>
           <ClayNav.Item className={sytles.navItem}>
-            <Icon icon={"adjust"} />
+            <Icon
+              icon={"adjust"}
+              onClick={() => {
+                setDarkmode(!darkMode);
+              }}
+            />
           </ClayNav.Item>
           <ClayNav.Item className={sytles.navItem}>
             <Dropdown
-              icon={"cards2"}
+              icon={cardView === "cards" ? "cards2" : "cards-full"}
               options={viewTypes}
-              onClick={() => console.log("au")}
+              onClickFunction={setCardView}
             />
           </ClayNav.Item>
         </div>
@@ -92,7 +98,7 @@ const Nav = (props) => {
               color={"white"}
               padding={8}
               radius={4}
-              onClick={(e) => fetchRepository(e.toString())}
+              onClickFunction={(e) => fetchRepository(e.toString())}
             />
           </ClayNav.Item>
         </div>
@@ -102,8 +108,14 @@ const Nav = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  const {
+    userOptions: { cardView, darkMode, filterFavorite },
+  } = state;
+
   return {
-    state,
+    cardView,
+    darkMode,
+    filterFavorite,
   };
 };
 
@@ -114,9 +126,11 @@ const mapDispatchToProps = (dispatch) => {
     searchByName: (name) =>
       dispatch(RepositoryController.searchRepositoryByName(name)),
     filterByFavorite: (trigger) =>
-      dispatch(RepositoryController.filterByFavorite(trigger)),
+      dispatch(OptionsController.filterByFavorite(trigger)),
     orderByCategory: (category) =>
-      dispatch(RepositoryController.orderByCategory(category)),
+      dispatch(OptionsController.orderByCategory(category)),
+    setCardView: (view) => dispatch(OptionsController.setCardView(view)),
+    setDarkmode: (trigger) => dispatch(OptionsController.setDarkMode(trigger)),
   };
 };
 
