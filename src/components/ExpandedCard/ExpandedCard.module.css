@@ -25,7 +25,6 @@
   width: 100%;
   margin: 0;
   margin-top: 16px;
-
   padding: 0;
 }
 
@@ -57,4 +56,20 @@
 
 .infos p {
   margin-right: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .infos {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .imageDiv {
+    margin: 2px 4px;
+  }
+
+  .cardOptions {
+    margin-right: 45px;
+    font-size: 16px;
+  }
 }
