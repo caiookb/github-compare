@@ -1,0 +1,15 @@
+.dropdown {
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  font-weight: 500;
+  padding: 0;
+  border: none;
+}
+
+.button:target {
+  background-color: blue;
+  border: none;
+}
