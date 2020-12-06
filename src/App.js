@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "@clayui/css/lib/css/atlas.css";
+import Main from "./views/Main/Main";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export const spritemap =
+  "https://cdn.jsdelivr.net/npm/@clayui/css/lib/images/icons/icons.svg";
+
+const App = () => {
+  return <Main />;
+};
 
 export default App;
