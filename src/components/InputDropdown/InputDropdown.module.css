@@ -23,6 +23,15 @@
   border-bottom: 2px solid #e7e7ed;
   margin-bottom: 10px;
   padding: 14px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.cardTop h4 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
 }
 
 .cardBottom {
@@ -33,4 +42,16 @@
   padding: 6px 24px 6px;
   display: flex;
   justify-content: space-around;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    left: -225px;
+    width: 300px;
+    height: 212px;
+  }
+
+  .navGroup:nth-child(2) {
+    max-width: 300px;
+  }
 }
