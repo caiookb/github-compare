@@ -2,3 +2,15 @@
   width: 80%;
   height: 40px;
 }
+
+.error {
+  color: red;
+  background-color: #feefef;
+  border-color: #f48989;
+}
+
+@media only screen and (max-width: 600px) {
+  .input {
+    width: 70%;
+  }
+}
