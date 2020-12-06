@@ -1,0 +1,60 @@
+.card {
+  width: 1023px;
+  display: flex;
+  margin: 0px 15px 30px;
+  padding: 0;
+  border-radius: 0px;
+}
+
+.imageDiv {
+  margin: 12px 16px;
+}
+
+.avatarImage {
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 4px 7px 6px 6px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  margin-top: 16px;
+
+  padding: 0;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 5%;
+  margin-right: 24px;
+  font-size: 16px;
+}
+
+.infos {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  color: #6b6c7e;
+  font-family: SF Pro Text;
+  font-style: normal;
+  line-height: 150%;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.infos p {
+  margin-right: 16px;
+}
