@@ -2,14 +2,24 @@ import React from "react";
 import { render } from "@testing-library/react";
 import Card from "./Card";
 
+import { Provider } from "react-redux";
+import store from "../../Store";
+
+import renderAppWithState from "../../renderAppWithState";
+
 describe("card component", () => {
-  it("should render card with props", () => {
+  it("should render card ", () => {
     const { getByTestId } = render(
-      <div data-testid="card">
-        <Card data-testid="card" />
-      </div>
+      <Provider store={store}>
+        <Card data-testid="card" repository={{ name: "liferay/senna.js" }} />
+      </Provider>
     );
     const el = getByTestId("card");
     expect(el).not.toBeNull();
+  });
+
+  it("should get respository list from from redux", () => {
+    const [store, wrapper] = renderAppWithState();
+    expect(store.getState().repositories).toEqual({ repositoriesList: [] });
   });
 });

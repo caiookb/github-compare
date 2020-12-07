@@ -1,4 +1,6 @@
 import ClayCard from "@clayui/card";
+import React from "react";
+
 import { Icon, Modal, Tag } from "../../components";
 import styles from "./Card.module.css";
 import * as RepositoryController from "../../controllers/RepositoriesController";
@@ -6,7 +8,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 
 const Card = (props) => {
-  const { repository, markAsFavorite, removeRepository } = props;
+  const { repository, markAsFavorite, removeRepository, key } = props;
 
   const language = repository?.language;
 
@@ -23,7 +25,11 @@ const Card = (props) => {
   ];
 
   return (
-    <ClayCard className={`col-md-6 ${styles.card}`}>
+    <ClayCard
+      className={`col-md-6 ${styles.card}`}
+      key={key}
+      data-testid="card"
+    >
       <ClayCard.Row className={styles.titleRow}>
         <div
           className={styles.cardImage}
@@ -53,7 +59,7 @@ const Card = (props) => {
             displayType="text"
             key={idx}
           >
-            <strong>{info.title}</strong> {info.value}
+            <strong key={idx}>{info.title}</strong> {info.value}
           </ClayCard.Description>
         ))}
 
