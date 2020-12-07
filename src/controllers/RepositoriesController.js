@@ -1,3 +1,4 @@
+import moment from "moment";
 import { RepositoriesActions } from "../libs/redux/actions";
 import { RepositoriesServer } from "../server";
 
@@ -20,12 +21,16 @@ export const getRepositoryByName = (name) => (dispatch) => {
         name: `${res.data.owner.login}/${res.data.name}`,
         image: res.data.owner.avatar_url,
         favorite: false,
+        created_at: moment(),
       };
 
-      list.push(cleanedRepository);
-
-      dispatch(RepositoriesActions.saveRepositories(list));
-      localStorage.setItem("repositoriesList", JSON.stringify(list));
+      dispatch(
+        RepositoriesActions.saveRepositories([cleanedRepository].concat(list))
+      );
+      localStorage.setItem(
+        "repositoriesList",
+        JSON.stringify([cleanedRepository].concat(list))
+      );
     })
     .catch((error) => {
       throw error;
