@@ -56,11 +56,11 @@ const Main = (props) => {
             />
           ) : (
             <>
-              {repositoriesList?.map((repository) =>
+              {repositoriesList?.map((repository, key) =>
                 cardView === "cards" ? (
-                  <Card repository={repository} />
+                  <Card repository={repository} key={key} />
                 ) : (
-                  <ExpandedCard repository={repository} />
+                  <ExpandedCard repository={repository} key={key} />
                 )
               )}
             </>
