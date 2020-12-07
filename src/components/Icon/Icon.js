@@ -13,7 +13,7 @@ const Icon = ({ icon, padding, backgroundColor, color, radius, onClick }) => {
       }}
       onClick={onClick}
     >
-      <svg class="lexicon-icon" focusable="false" role="presentation">
+      <svg className="lexicon-icon" focusable="false" role="presentation">
         <use xlinkHref={`${icons}#${icon}`} />
       </svg>
     </i>
