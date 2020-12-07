@@ -46,17 +46,17 @@ const Card = (props) => {
         </div>
       </ClayCard.Row>
       <ClayCard.Body>
-        <ClayCard.Description
-          className={styles.infos}
-          truncate={false}
-          displayType="text"
-        >
-          {cardInfoArray.map((info, idx) => (
-            <p className={styles.infos} key={idx}>
-              <strong>{info.title}</strong> {info.value}
-            </p>
-          ))}
-        </ClayCard.Description>
+        {cardInfoArray.map((info, idx) => (
+          <ClayCard.Description
+            className={styles.infos}
+            truncate={false}
+            displayType="text"
+            key={idx}
+          >
+            <strong>{info.title}</strong> {info.value}
+          </ClayCard.Description>
+        ))}
+
         <Tag title={language} />
       </ClayCard.Body>
     </ClayCard>
