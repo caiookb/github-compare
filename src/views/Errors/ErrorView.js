@@ -12,6 +12,7 @@ const ErrorView = (props) => {
         maxWidth: 360,
         fontWeight: 700,
       }}
+      data-testid="errorView"
     >
       <img src={image} />
       <h2 style={{ marginTop: 40, color: "#272833" }}>{title}</h2>
