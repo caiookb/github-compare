@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Card, ExpandedCard } from "../../components";
 import Nav from "../Nav/Nav";
-import EmptyRepositories from "../Errors/EmptyRepositories";
-import EmptySearch from "../Errors/EmptySearch";
+import ErrorView from "../Errors/ErrorView";
 
 import { connect } from "react-redux";
 import * as RepositoryController from "../../controllers/RepositoriesController";
 import styles from "./Main.module.css";
 import { OptionsController } from "../../controllers";
+
+import { emptyRepoImage } from "../../assets/images";
 
 const Main = (props) => {
   const {
@@ -36,9 +37,23 @@ const Main = (props) => {
       <div className="container">
         <div className={`row  ${styles.view}`}>
           {failedSearch ? (
-            <EmptySearch />
+            <ErrorView
+              title={"Something went wrong!"}
+              subtitle={"No results were found that matched"}
+              onClick={() => {
+                document.getElementById("filter").value = "";
+                saveLocalRepoOnRedux();
+              }}
+              color={"secondary"}
+              buttonTitle={"Clear Filter"}
+              image={emptyRepoImage}
+            />
           ) : empty ? (
-            <EmptyRepositories />
+            <ErrorView
+              title={"There is still nothing here"}
+              subtitle={"Add some repositories by clicking add new repository"}
+              image={emptyRepoImage}
+            />
           ) : (
             <>
               {repositoriesList?.map((repository) =>
