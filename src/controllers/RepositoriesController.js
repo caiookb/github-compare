@@ -33,6 +33,11 @@ export const getRepositoryByName = (name) => (dispatch) => {
       );
     })
     .catch((error) => {
+      if (error.response.status === 404) {
+        error.message = "Repository not found on Github";
+      } else {
+        error.message = "Github API error, please try again in a few minutes";
+      }
       throw error;
     });
 };

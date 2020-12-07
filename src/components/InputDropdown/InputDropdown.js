@@ -61,7 +61,8 @@ const InputDropdown = (props) => {
               onClick={() => setActive(false)}
               type={"button"}
             />
-            <Button btnClass={"primary"} title={"Add"} />
+
+            <Button btnClass={"primary"} title={"Add"} disabled={error} />
           </div>
         </form>
       ) : null}
