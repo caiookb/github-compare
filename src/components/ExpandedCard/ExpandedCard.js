@@ -1,4 +1,5 @@
 import ClayCard from "@clayui/card";
+import React from "react";
 import { Tag } from "..";
 import { Icon } from "../../components";
 import styles from "./ExpandedCard.module.css";
@@ -25,7 +26,7 @@ const ExpandedCard = (props) => {
   ];
 
   return (
-    <ClayCard className={`col-md-12 ${styles.card}`}>
+    <ClayCard className={`col-md-12 ${styles.card}`} data-testid="expandedCard">
       <ClayCard.Row className={styles.row}>
         <div className={styles.imageDiv}>
           <div
