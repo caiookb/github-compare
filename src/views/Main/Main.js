@@ -31,9 +31,8 @@ const Main = (props) => {
     repositoriesList?.length === 0 && repositories.length > 0;
 
   return (
-    <div className={"container-fluid"}>
+    <div>
       <Nav />
-
       <div className="container">
         <div className={`row  ${styles.view}`}>
           {failedSearch ? (
