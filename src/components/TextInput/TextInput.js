@@ -4,8 +4,11 @@ import styles from "./TextInput.module.css";
 
 const TextInputIcon = ({ icon, onClick }) => {
   return (
-    <div class="input-group-inset-item input-group-inset-item-after">
-      <button class="btn btn-unstyled d-none d-md-inline-block" type="button">
+    <div className="input-group-inset-item input-group-inset-item-after">
+      <button
+        className="btn btn-unstyled d-none d-md-inline-block"
+        type="button"
+      >
         <Icon icon={icon} onClick={onClick} />
       </button>{" "}
     </div>
@@ -23,11 +26,12 @@ const TextInput = (props) => {
     required,
     error,
     id,
+    disabled,
   } = props;
 
   return (
-    <div class="input-group">
-      <div class="input-group-item">
+    <div className="input-group">
+      <div className="input-group-item">
         <label>
           {label}{" "}
           {required ? <span style={{ color: "#B95000" }}>*</span> : null}
@@ -45,6 +49,7 @@ const TextInput = (props) => {
           className={`form-control input-group-inset  ${
             icon ? "input-group-inset-after" : null
           } ${error ? styles.error : null} ${styles.input}`}
+          disabled={disabled}
         />
         {icon ? (
           <TextInputIcon onClick={() => onChange(value)} icon={icon} />
