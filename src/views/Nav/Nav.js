@@ -39,7 +39,7 @@ const Nav = (props) => {
   } = props;
 
   return (
-    <div className={sytles.container} id={"nav"}>
+    <div className={sytles.container} id={"nav"} data-testid="nav">
       <ClayNav className={sytles.nav}>
         <div className={sytles.navGroup}>
           <ClayNav.Item className={sytles.navItem}>
