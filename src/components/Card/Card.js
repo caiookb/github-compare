@@ -27,7 +27,7 @@ const Card = (props) => {
       <ClayCard.Row className={styles.titleRow}>
         <div
           className={styles.cardImage}
-          style={{ backgroundImage: `url(${repository.image})` }}
+          style={{ backgroundImage: `url(${repository?.image})` }}
         ></div>
         <ClayCard.Description className={styles.title} displayType="title">
           {repository.name}
@@ -52,12 +52,12 @@ const Card = (props) => {
           displayType="text"
         >
           {cardInfoArray.map((info, idx) => (
-            <p className={styles.infos}>
+            <p className={styles.infos} key={idx}>
               <strong>{info.title}</strong> {info.value}
             </p>
           ))}
-          <Tag title={language} />
         </ClayCard.Description>
+        <Tag title={language} />
       </ClayCard.Body>
     </ClayCard>
   );
