@@ -13,9 +13,10 @@ React App created to list and manage repositories on Github.
 ### How to run application
 **You must have NodeJs installed on your system.**
 
-1 - `git clone` or **download** the repository
-2 - Go to folder and run on terminal `npm install` to install all libs that are necessary for the application to run.
-3 - Run `npm start` to start the application
-4 - Go to [localhost:3000](localhost:3000)
+ 1. `git clone` or **download** the repository
+ 2. Go to folder and run on terminal `npm install` to install all libs that are necessary for the application to run.
+ 3. Run `npm start` to start the application
+ 4. Go to [localhost:3000](localhost:3000)
+ 
 
 Any doubt you can contact me on caiookb@gmail.com :)
