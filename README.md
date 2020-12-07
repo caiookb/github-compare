@@ -20,5 +20,12 @@ Application running on https://caiookb.github.io/github-compare/
  3. Run `npm start` to start the application
  4. Go to [localhost:3000](localhost:3000)
  
+### How to test application
+
+ 1. Go to folder and run on terminal `npm install` to install all libs that are necessary for the application to run.
+ 2. Run `npm run test` to test the application
+
+
+ 
 
 Any doubt you can contact me on caiookb@gmail.com :)
