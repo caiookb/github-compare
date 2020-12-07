@@ -1,18 +1,22 @@
 import React from "react";
 import Icon from "../Icon/Icon";
 import styles from "./Button.module.css";
+import ClayButton from "@clayui/button";
 
-const Button = ({ title, icon, btnClass, onClick, type, disabled }) => {
+const Button = (props) => {
+  const { title, icon, displayType, onClick, type, disabled } = props;
   return (
-    <button
-      className={`btn btn-${btnClass} ${styles.button}`}
+    <ClayButton
+      displayType={displayType}
+      title={title}
       onClick={onClick}
       type={type}
       disabled={disabled}
+      className={styles.button}
     >
       {title}
-      {icon ? <Icon icon={icon} /> : null}
-    </button>
+      {icon ? <Icon icon={icon} {...props} /> : null}
+    </ClayButton>
   );
 };
 
