@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Button from "../Button/Button";
+import ClayButton from "@clayui/button";
+
 import Icon from "../Icon/Icon";
 import TextInput from "../TextInput/TextInput";
 import styles from "./InputDropdown.module.css";
+import Button from "../Button/Button";
 
 const InputDropdown = (props) => {
   const { onClickFunction } = props;
@@ -50,16 +52,23 @@ const InputDropdown = (props) => {
             </div>
           </div>
 
-          <div className={styles.cardBottom}>
+          <ClayButton.Group spaced className={styles.cardBottom}>
             <Button
-              btnClass={"secondary"}
+              displayType={"secondary"}
               title={"Cancel"}
               onClick={() => setActive(false)}
               type={"button"}
+              title={"Cancel"}
             />
 
-            <Button btnClass={"primary"} title={"Add"} disabled={error} />
-          </div>
+            <Button
+              displayType={"primary"}
+              title={"Add"}
+              disabled={error}
+              type={"submit"}
+              disabled={error}
+            />
+          </ClayButton.Group>
         </form>
       ) : null}
     </div>

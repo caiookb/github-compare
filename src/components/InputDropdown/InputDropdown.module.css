@@ -35,18 +35,14 @@
 }
 
 .cardBottom {
-  width: 55%;
   float: right;
-  align-self: flex-end;
-  padding-top: 15px;
-  padding: 6px 24px 6px;
-  display: flex;
-  justify-content: space-around;
+  margin-right: 24px;
 }
 
 .error {
   color: "#DA1414";
   min-height: 20px;
+  height: 20px;
 }
 
 @media only screen and (max-width: 768px) {
