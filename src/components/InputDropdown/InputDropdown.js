@@ -42,10 +42,10 @@ const InputDropdown = (props) => {
 
             <div className={styles.error}>
               {error ? (
-                <>
+                <div className={styles.error}>
                   <Icon icon={"exclamation-full"} color="#DA1414" />
-                  {error}
-                </>
+                  <span style={{ color: "#DA1414" }}>{error}</span>
+                </div>
               ) : null}
             </div>
           </div>
