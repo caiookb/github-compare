@@ -7,7 +7,7 @@ import store from "../../Store";
 
 import renderAppWithState from "../../renderAppWithState";
 
-describe("card component", () => {
+describe("expanded card component", () => {
   it("should render expanded card ", () => {
     const { getByTestId } = render(
       <Provider store={store}>

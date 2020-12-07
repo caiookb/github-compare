@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import InputDropdown from "./InputDropdown";
 
 describe("InputDropdown component", () => {
-  it("should InputDropdown ", () => {
+  it("should render InputDropdown ", () => {
     const { getByTestId } = render(
       <div data-testid="inputDropdown">
         <InputDropdown />
