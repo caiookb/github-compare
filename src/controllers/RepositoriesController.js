@@ -36,7 +36,7 @@ export const getRepositoryByName = (name) => (dispatch) => {
       if (error.response.status === 404) {
         error.message = "Repository not found on Github";
       } else {
-        error.message = "Github API error, please try again in a few minutes";
+        error.message = "Github API error, please try again";
       }
       throw error;
     });
