@@ -1,6 +1,8 @@
 # github-compare
 
 React App created to list and manage repositories on Github.
+
+Application running on https://caiookb.github.io/github-compare/
   
 ### Important Libraries
 - [axios](https://github.com/axios/axios) 
