@@ -40,12 +40,7 @@ const InputDropdown = (props) => {
               error={error}
             />
 
-            <div
-              style={{
-                color: "#DA1414",
-                minHeight: 20,
-              }}
-            >
+            <div className={styles.error}>
               {error ? (
                 <>
                   <Icon icon={"exclamation-full"} color="#DA1414" />
@@ -54,6 +49,7 @@ const InputDropdown = (props) => {
               ) : null}
             </div>
           </div>
+
           <div className={styles.cardBottom}>
             <Button
               btnClass={"secondary"}

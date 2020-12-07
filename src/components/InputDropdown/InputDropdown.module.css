@@ -44,6 +44,11 @@
   justify-content: space-around;
 }
 
+.error {
+  color: "#DA1414";
+  min-height: 20;
+}
+
 @media only screen and (max-width: 768px) {
   .card {
     left: -225px;
