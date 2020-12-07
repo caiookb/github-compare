@@ -60,7 +60,7 @@ export const orderByCategory = (category) => (dispatch) => {
   const orderRepositories = repositories.sort((a, b) => {
     return byNumber.includes(category)
       ? b[category] - a[category]
-      : moment(b[category]) - moment(a[category]);
+      : moment(a[category]) - moment(b[category]);
   });
 
   dispatch(RepositoriesActions.saveRepositories(orderRepositories));
